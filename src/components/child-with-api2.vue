@@ -40,7 +40,6 @@ export default class extends Vue {
   }  
 
   created() {
-    console.log('created')
     // _.set(this.myObject,'numberValue2', 0);
     this.$setPageDataCallback((data:any) => {
       console.log('child2.vue : $setPageDataCallback', data);

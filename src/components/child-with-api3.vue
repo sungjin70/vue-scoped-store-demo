@@ -28,7 +28,6 @@ export default class extends Vue {
   }
 
   created() {
-    console.log('created')
     this.$setPageDataCallback((data:any) => {
       // this.myObject = _.get(data, 'nestedObj.nestedStrVal1');
       // this.myObject = data;
