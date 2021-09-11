@@ -1,6 +1,6 @@
 # vue-scoped-store-demo
 
-This project shows the overall functionality of the vue-scoped-store.
+This project shows the overall functionality of the ScopedStore.
 
 
 ## Project setup
