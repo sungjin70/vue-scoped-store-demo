@@ -4,7 +4,7 @@
 
     <span>myObject.strValue1 : </span>
     <br />
-    <input v-model="myObject.strValue1" />
+    <input v-model="pageObject_strValue1" />
     <br />
     <span>myCounter : </span>
     <br />
@@ -15,7 +15,7 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 @Component({
   watch: {
@@ -37,9 +37,22 @@ export default class extends Vue {
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   private myCounter = -5;
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   get title() {
       return 'child-with-api1.vue';
   }
+
+  get pageObject_strValue1() : string {
+    try {
+      return this.myObject.strValue1;
+    } catch (error) {
+      return "";
+    }
+  }
+
+  set pageObject_strValue1(value:string) {
+    this.myObject.strValue1 = value;
+  }  
 
   created() {
     console.log('created')

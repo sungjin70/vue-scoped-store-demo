@@ -3,7 +3,7 @@
     <h2>{{title}}</h2>
     <span>myObject.numberValue2 : </span>
     <br />
-    <input v-model="myObject.numberValue1" type="number" />
+    <input v-model="myObject_numberValue1" type="number" />
   </div>
 </template>
 
@@ -26,6 +26,18 @@ export default class extends Vue {
   get title() {
       return 'child-with-api2.vue';
   }
+
+  get myObject_numberValue1() {
+    try {
+      return this.myObject.numberValue1;
+    } catch (error) {
+      return "";
+    }
+  }
+
+  set myObject_numberValue1(value:string) {
+    this.myObject.numberValue1 = value;
+  }  
 
   created() {
     console.log('created')
