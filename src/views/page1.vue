@@ -80,14 +80,14 @@
               <child4 />
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td style="background:CornflowerBlue">
               <child5 />
             </td>
             <td style="background:DarkGoldenRod">
               <child6 />
             </td>
-        </tr>
+        </tr> -->
     </table>
   </div>
 </template>
@@ -108,8 +108,8 @@ export default Vue.extend(
     child2,
     child3,
     child4,
-    child5,
-    child6,
+    // child5,
+    // child6,
   },
   data:function() {
     return {

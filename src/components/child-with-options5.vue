@@ -39,7 +39,6 @@ import _ from 'lodash';
       path:'pageCounter', // a path of store. default:the same as key
       // deep:true, //an option of watch
       //immediate:true, //an option of watch
-      shareOnCreated:true,
       // onBeforeSend: function(val:any, oldVal:any, options:{proceed:boolean}) {
       //   console.log('onBeforeSend for carCounter in child-with-options1', val, oldVal, options);
       // },

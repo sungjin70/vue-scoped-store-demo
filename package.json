@@ -14,7 +14,7 @@
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.2.0",
-    "vue-scoped-store": "^0.9.3"
+    "vue-scoped-store": "^0.9.13"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",

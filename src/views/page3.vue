@@ -108,7 +108,6 @@ import child8 from '@/components/child-with-options8.vue';
       //path:'', // a path of store. default:the same as key
       deep:true, //an option of watch
       //immediate:true, //an option of watch
-      shareOnCreated:false, // share this data at the created stage - default:false
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onBeforeSend: function(val:any, oldVal:any, options:{proceed:boolean}) {
         console.log('onBeforeSend for pageObject', val, oldVal, options);
@@ -149,7 +148,6 @@ import child8 from '@/components/child-with-options8.vue';
       path:'pageCounter', // a path of store. default:the same as key
       // deep:true, //an option of watch
       //immediate:true, //an option of watch
-      shareOnCreated:false,
       onBeforeSend: function(val:any, oldVal:any, options:{proceed:boolean}) {
         console.log('onBeforeSend for carCounter in page1', val, oldVal, options);
       },
