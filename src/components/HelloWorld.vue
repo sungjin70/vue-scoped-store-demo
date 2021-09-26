@@ -4,7 +4,7 @@
     <p>
       
     </p>
-    <h3>This is a demo application for ScopedStore</h3>
+    <h3>This is a API demo application for ScopedStore</h3>
 
   </div>
 </template>

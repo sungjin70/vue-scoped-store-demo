@@ -2,11 +2,11 @@
   <div>
     <h2>{{title}}</h2>
 
-    <span>myObject.strValue1 : </span>
+    <span>strValue1 (path:pageObject.strValue1) : </span>
     <br />
-    <input v-model="pageObject_strValue1" />
+    <input v-model="strValue1" />
     <br />
-    <span>myCounter : </span>
+    <span>myCounter (path:myCounter): </span>
     <br />
     <input v-model="myCounter" type="number" />
   </div>
@@ -19,21 +19,27 @@ import Component from 'vue-class-component';
 
 @Component({
   watch: {
-    'myObject.strValue1' : {
-      deep: true,
+    strValue1 : {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler (newVal : any, oldVal: any): void {
-        this.$sendPageData(newVal,'pageObject.strValue1');
+        if (newVal != oldVal) 
+        {
+          this.$sendPageData(newVal,'pageObject.strValue1');
+        }
       }
     },
     myCounter : function (newVal : any, oldVal: any) {
-      this.$sendPageData(newVal,'pageCounter');
+      if (newVal != oldVal) 
+      {
+        console.log('myCounter => sending data');
+        this.$sendPageData(newVal,'pageCounter');
+      }
     },
   },
 })
 export default class extends Vue {
 
-  private myObject: any = null;
+  private strValue1 = '';
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   private myCounter = -5;
 
@@ -42,24 +48,12 @@ export default class extends Vue {
       return 'child-with-api1.vue';
   }
 
-  get pageObject_strValue1() : string {
-    try {
-      return this.myObject.strValue1;
-    } catch (error) {
-      return "";
-    }
-  }
-
-  set pageObject_strValue1(value:string) {
-    this.myObject.strValue1 = value;
-  }  
-
   created() {
     this.$setPageDataCallback((data:any) => {
       console.log('child1.vue : $setPageDataCallback', data);
       // this.myObject = _.get(data, 'nestedObj.nestedStrVal1');
-      this.myObject = data;
-    }, 'pageObject');
+      this.strValue1 = data;
+    }, 'pageObject.strValue1');
 
     this.$setPageDataCallback((data:any) => {
       console.log('child1.vue : $setPageDataCallback', data);

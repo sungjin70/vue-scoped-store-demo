@@ -1,9 +1,10 @@
 <template>
   <div>
     <h2>{{title}}</h2>
-    <span>myObject.numberValue2 : </span>
+    
+    <span>numberValue1 (path:pageObject.numberValue1) : </span>
     <br />
-    <input v-model="myObject_numberValue1" type="number" />
+    <input v-model="numberValue1" type="number" />
   </div>
 </template>
 
@@ -14,38 +15,25 @@ import _ from 'lodash';
 
 @Component({
   watch: {
-    'myObject.numberValue2' : function (newVal : any, oldVal: any) {
-      this.$sendPageData(newVal,'pageObject.numberValue2');
+    numberValue1 : function (newVal : any, oldVal: any) {
+      this.$sendPageData(newVal,'pageObject.numberValue1');
     },
   },
 })
 export default class extends Vue {
 
-  private myObject: any = null
+  private numberValue1 = 0;
 
   get title() {
       return 'child-with-api2.vue';
   }
 
-  get myObject_numberValue1() {
-    try {
-      return this.myObject.numberValue1;
-    } catch (error) {
-      return "";
-    }
-  }
-
-  set myObject_numberValue1(value:string) {
-    this.myObject.numberValue1 = value;
-  }  
-
   created() {
     // _.set(this.myObject,'numberValue2', 0);
     this.$setPageDataCallback((data:any) => {
-      console.log('child2.vue : $setPageDataCallback', data);
-      // this.myObject = _.get(data, 'nestedObj.nestedStrVal1');
-      this.myObject = data;
-    }, 'pageObject');
+      this.numberValue1 = data;
+      // this.myObject = data;
+    }, 'pageObject.numberValue1');
   }
 
 }

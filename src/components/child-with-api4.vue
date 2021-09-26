@@ -1,50 +1,36 @@
 <template>
   <div>
     <h2>{{title}}</h2>
-    <span>myObject.nestedObj.nestedNumberVal1 : </span>
+    <span>nestedNumberVal1 (path:pageObject.nestedObj.nestedNumberVal1) : </span>
     <br />
-    <input v-model="myObject_nestedObj_nestedNumberVal1" type="number" />
+    <input v-model="nestedNumberVal1" type="number" />
   </div>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import _ from 'lodash';
 
 @Component({
   watch: {
-    'myObject.nestedObj.nestedNumberVal1' : function (newVal : any, oldVal: any) {
+    nestedNumberVal1 : function (newVal : any, oldVal: any) {
       this.$sendPageData(newVal,'pageObject.nestedObj.nestedNumberVal1');
     },
   },
 })
 export default class extends Vue {
 
-  private myObject: any = null
+  private nestedNumberVal1 = -1;
 
   get title(): string {
       return 'child-with-api4.vue';
   }
 
-  get myObject_nestedObj_nestedNumberVal1(): string {
-    try {
-      return this.myObject.nestedObj.nestedNumberVal1;
-    } catch (error) {
-      return "";
-    }
-  }
-
-  set myObject_nestedObj_nestedNumberVal1(value:string) {
-    this.myObject.nestedObj.nestedNumberVal1 = value;
-  }  
-
   created(): void {
     this.$setPageDataCallback((data:any) => {
       console.log('child4.vue : $setPageDataCallback', data);
-      // this.myObject = _.get(data, 'nestedObj.nestedStrVal1');
-      this.myObject = data;
-    },'pageObject');
+      this.nestedNumberVal1 = data;
+    },'pageObject.nestedObj.nestedNumberVal1');
   }
 }
 </script>
