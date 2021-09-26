@@ -4,7 +4,8 @@
     <p>
       
     </p>
-    <h3>This is a API demo application for ScopedStore</h3>
+    <h2>This is a API demo application for ScopedStore</h2>
+    <h4>Examples in this API demo show you many things you can do with ScopedStore</h4>
 
   </div>
 </template>
