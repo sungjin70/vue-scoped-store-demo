@@ -94,7 +94,7 @@ import child2 from '@/components/child-with-decorators2.vue';
 import child3 from '@/components/child-with-decorators3.vue';
 import child4 from '@/components/child-with-decorators4.vue';
 import {
-  AsPage,
+  Page,
   GlobalStore,
   PageStore,
   GlobalStoreBeforeReceive,
@@ -104,6 +104,7 @@ import {
   PageStoreBeforeSend
 } from 'vue-scoped-store';
 
+@Page
 @Component({
   components:{
     child1,
@@ -119,8 +120,9 @@ export default class extends Vue {
   @PageStore({path:"pageCounter"})
   private myPageCounter = 101;
 
-  @AsPage()
-  private isPage = true;
+  // the deprecated syntax
+  // @AsPage()
+  // private isPage = true;
 
   @GlobalStore({deep:true})
   private globalObject = {
